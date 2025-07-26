@@ -35,7 +35,7 @@ export default async function handler(req, res) {
     // Обновляем ячейки A2:C2 (замени Exchange на своё имя листа!)
     await sheets.spreadsheets.values.update({
       spreadsheetId: process.env.SHEET_ID,
-      range: 'Лист1!A2:C2', // << проверь имя листа
+      range: 'Exchange!A2:C2', // << проверь имя листа
       valueInputOption: 'USER_ENTERED',
       requestBody: {
         values: [[from, to, amount]]
