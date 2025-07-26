@@ -1,28 +1,13 @@
 import { google } from 'googleapis';
 
 export default async function handler(req, res) {
-  // Разрешаем CORS (если нужно вызывать с фронта)
-  res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
-  if (req.method === 'OPTIONS') {
-    return res.status(200).end();
-  }
-
-  // Проверка метода
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
   const { from, to, amount } = req.body;
 
-  // Проверка параметров
-  if (!from || !to || !amount) {
-    return res.status(400).json({ error: 'Missing parameters' });
-  }
-
   try {
-    // Авторизация через сервисный аккаунт
     const auth = new google.auth.JWT(
       process.env.CLIENT_EMAIL,
       null,
@@ -32,19 +17,27 @@ export default async function handler(req, res) {
 
     const sheets = google.sheets({ version: 'v4', auth });
 
-    // Обновляем ячейки A2:C2 (замени Exchange на своё имя листа!)
+    // 1. Записываем входные данные
     await sheets.spreadsheets.values.update({
       spreadsheetId: process.env.SHEET_ID,
-      range: 'Exchange!A2:C2', // << проверь имя листа
+      range: 'Exchange!A2:C2', // твой лист и диапазон
       valueInputOption: 'USER_ENTERED',
       requestBody: {
         values: [[from, to, amount]]
       }
     });
 
-    return res.status(200).json({ ok: true });
+    // 2. Читаем результат из D2 (где стоит формула)
+    const readRes = await sheets.spreadsheets.values.get({
+      spreadsheetId: process.env.SHEET_ID,
+      range: 'Exchange!D2' // там должен быть результат
+    });
+
+    const result = readRes.data.values ? readRes.data.values[0][0] : null;
+
+    return res.status(200).json({ ok: true, result });
   } catch (err) {
     console.error('Sheets API error:', err);
-    return res.status(500).json({ error: 'Failed to update sheet' });
+    return res.status(500).json({ error: 'Failed to process' });
   }
 }
