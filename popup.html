@@ -1,39 +1,31 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <title>Конвертер валют</title>
-  <style>
-    body { font-family: sans-serif; width: 220px; padding: 10px; }
-    select, input, button { width: 100%; margin-bottom: 8px; padding: 6px; }
-    #swap { width: 100%; background: #eee; border: 1px solid #ccc; cursor: pointer; }
-    #result { margin-top: 10px; font-weight: bold; }
-  </style>
+<meta charset="UTF-8">
+<title>Exchange Widget</title>
+<style>
+  body { font-family: sans-serif; width: 250px; padding: 10px; }
+  input, button { margin-top: 5px; width: 100%; }
+  #result { margin-top: 10px; font-weight: bold; }
+</style>
 </head>
 <body>
-  <input id="amount" type="number" placeholder="Сумма">
+  <h3>💱 Конвертер</h3>
 
-  <label for="from">Из:</label>
-  <select id="from">
-    <option value="USD">Доллары (USD)</option>
-    <option value="EUR">Евро (EUR)</option>
-    <option value="RUB">Рубли (RUB)</option>
-    <option value="AMD">Драмы (AMD)</option>
-  </select>
+  <label>From:</label>
+  <input id="from" value="RUB" />
 
-  <button id="swap">⇄ Поменять местами</button>
+  <label>To:</label>
+  <input id="to" value="AMD" />
 
-  <label for="to">В:</label>
-  <select id="to">
-    <option value="USD">Доллары (USD)</option>
-    <option value="EUR">Евро (EUR)</option>
-    <option value="RUB">Рубли (RUB)</option>
-    <option value="AMD">Драмы (AMD)</option>
-  </select>
+  <label>Amount:</label>
+  <input id="amount" type="number" value="300" />
 
   <button id="convert">Конвертировать</button>
+
   <div id="result"></div>
 
+  <!-- подключаем JS отдельным файлом -->
   <script src="popup.js"></script>
 </body>
 </html>
