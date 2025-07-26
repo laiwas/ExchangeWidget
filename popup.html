@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Конвертер валют</title>
+  <style>
+    body { font-family: sans-serif; width: 220px; padding: 10px; }
+    select, input, button { width: 100%; margin-bottom: 8px; padding: 6px; }
+    #swap { width: 100%; background: #eee; border: 1px solid #ccc; cursor: pointer; }
+    #result { margin-top: 10px; font-weight: bold; }
+  </style>
+</head>
+<body>
+  <input id="amount" type="number" placeholder="Сумма">
+
+  <label for="from">Из:</label>
+  <select id="from">
+    <option value="USD">Доллары (USD)</option>
+    <option value="EUR">Евро (EUR)</option>
+    <option value="RUB">Рубли (RUB)</option>
+    <option value="AMD">Драмы (AMD)</option>
+  </select>
+
+  <button id="swap">⇄ Поменять местами</button>
+
+  <label for="to">В:</label>
+  <select id="to">
+    <option value="USD">Доллары (USD)</option>
+    <option value="EUR">Евро (EUR)</option>
+    <option value="RUB">Рубли (RUB)</option>
+    <option value="AMD">Драмы (AMD)</option>
+  </select>
+
+  <button id="convert">Конвертировать</button>
+  <div id="result"></div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
