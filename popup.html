@@ -1,31 +1,47 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Exchange Widget</title>
-<style>
-  body { font-family: sans-serif; width: 250px; padding: 10px; }
-  input, button { margin-top: 5px; width: 100%; }
-  #result { margin-top: 10px; font-weight: bold; }
-</style>
+  <meta charset="UTF-8">
+  <title>Exchange Converter (Google Rates)</title>
+  <link rel="stylesheet" href="popup.css">
 </head>
 <body>
-  <h3>💱 Конвертер</h3>
+  <h3>💱 Exchange Converter (Google Rates)</h3>
 
-  <label>From:</label>
-  <input id="from" value="RUB" />
+  <label for="from">From currency:</label>
+  <select id="from">
+    <option value="USD">USD – US Dollar</option>
+    <option value="EUR">EUR – Euro</option>
+    <option value="GBP">GBP – British Pound</option>
+    <option value="JPY">JPY – Japanese Yen</option>
+    <option value="RUB" selected>RUB – Russian Ruble</option>
+    <option value="AMD">AMD – Armenian Dram</option>
+  </select>
 
-  <label>To:</label>
-  <input id="to" value="AMD" />
+  <div class="to-row">
+    <div class="to-column">
+      <label for="to">To currency:</label>
+      <select id="to">
+        <option value="USD">USD – US Dollar</option>
+        <option value="EUR">EUR – Euro</option>
+        <option value="GBP">GBP – British Pound</option>
+        <option value="JPY">JPY – Japanese Yen</option>
+        <option value="RUB">RUB – Russian Ruble</option>
+        <option value="AMD" selected>AMD – Armenian Dram</option>
+      </select>
+    </div>
+    <div class="swap-column">
+      <button id="swap" title="Swap currencies">⇄</button>
+    </div>
+  </div>
 
-  <label>Amount:</label>
-  <input id="amount" type="number" value="300" />
+  <label for="amount">Amount:</label>
+  <input id="amount" type="number" value="20000" />
 
-  <button id="convert">Конвертировать</button>
+  <button id="convert">Convert</button>
 
   <div id="result"></div>
 
-  <!-- подключаем JS отдельным файлом -->
   <script src="popup.js"></script>
 </body>
 </html>

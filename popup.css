@@ -1,52 +1,95 @@
 body {
-  font-family: sans-serif;
-  width: 250px;
-  padding: 10px;
-  background-color: #f7f7f7;
-  color: #333;
+  font-family: 'Segoe UI', Tahoma, sans-serif;
+  width: 260px;
+  padding: 20px;
+  background: linear-gradient(145deg, #3a3a3a, #2d2d2d);
+  color: #f5f5f5;
 }
 
 h3 {
   margin-top: 0;
   font-size: 18px;
   text-align: center;
+  margin-bottom: 20px;
 }
 
 label {
   display: block;
   margin-top: 10px;
-  font-weight: bold;
+  margin-bottom: 5px;
+  font-size: 13px;
+  font-weight: 600;
 }
 
-input {
-  margin-top: 5px;
-  width: 100%;
-  padding: 6px 8px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box;
-}
-
-button {
-  margin-top: 10px;
+select, input {
   width: 100%;
   padding: 8px;
   border: none;
-  border-radius: 4px;
+  border-radius: 6px;
+  background-color: #4a4a4a;
+  color: #f5f5f5;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+
+select:focus, input:focus {
+  outline: 2px solid #5ac8fa;
+}
+
+/* row for To + swap button */
+.to-row {
+  display: flex;
+  align-items: flex-end;
+  margin-top: 10px;
+}
+
+.to-column {
+  flex: 1;
+}
+
+.swap-column {
+  margin-left: 8px;
+}
+
+#swap {
+  background-color: #5ac8fa;
+  border: none;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  color: #1c1c1c;
+  transition: background-color 0.2s;
+}
+
+#swap:hover {
+  background-color: #42b0e6;
+}
+
+button#convert {
+  margin-top: 12px;
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 6px;
   background-color: #4CAF50;
   color: white;
   font-weight: bold;
+  font-size: 15px;
   cursor: pointer;
   transition: background-color 0.2s;
 }
 
-button:hover {
-  background-color: #45a049;
+button#convert:hover {
+  background-color: #3f9a43;
 }
 
 #result {
-  margin-top: 12px;
+  margin-top: 14px;
   font-weight: bold;
   text-align: center;
   min-height: 24px;
+  font-size: 15px;
 }
